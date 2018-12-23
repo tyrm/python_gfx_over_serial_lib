@@ -15,3 +15,9 @@ if __name__ == '__main__':
     panel.draw_rect(5, 18, 5, 5, 22, 44, 66)
 
     panel.draw_line(3, 0, 9, 17, 255, 0, 0)
+
+    panel.draw_circle(24, 8, 4, 0, 255, 0)
+    panel.fill_circle(26, 10, 4, 127, 0, 255)
+
+    panel.fill_triangle(18, 18, 26, 18, 22, 24, 0, 127, 127)
+    panel.draw_triangle(21, 20, 29, 20, 25, 26, 255, 127, 127)

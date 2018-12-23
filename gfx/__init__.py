@@ -20,6 +20,10 @@ class GFX:
 
         return color
 
+    def draw_circle(self, x, y, rad, r, g, b):
+        color = self.color888(r, g, b)
+        self._port.write("0a{0:02x}{1:02x}{2:02x}{3:04x}\n".format(x, y, rad, color))
+
     def draw_fast_h_line(self, x, y, w, r, g, b):
         color = self.color888(r, g, b)
         self._port.write("05{0:02x}{1:02x}{2:02x}{3:04x}\n".format(x, y, w, color))
@@ -40,6 +44,14 @@ class GFX:
         color = self.color888(r, g, b)
         self._port.write("09{0:02x}{1:02x}{2:02x}{3:02x}{4:04x}\n".format(x, y, w, h, color))
 
+    def draw_triangle(self, x0, y0, y1, x1, y2, x2, r, g, b):
+        color = self.color888(r, g, b)
+        self._port.write("0e{0:02x}{1:02x}{2:02x}{3:02x}{4:02x}{5:02x}{6:04x}\n".format(x0, y0, y1, x1, y2, x2, color))
+
+    def fill_circle(self, x, y, rad, r, g, b):
+        color = self.color888(r, g, b)
+        self._port.write("0c{0:02x}{1:02x}{2:02x}{3:04x}\n".format(x, y, rad, color))
+
     def fill_rect(self, x, y, w, h, r, g, b):
         color = self.color888(r, g, b)
         self._port.write("06{0:02x}{1:02x}{2:02x}{3:02x}{4:04x}\n".format(x, y, w, h, color))
@@ -47,6 +59,10 @@ class GFX:
     def fill_screen(self, r, g, b):
         color = self.color888(r, g, b)
         self._port.write("07{0:04x}\n".format(color))
+
+    def fill_triangle(self, x0, y0, y1, x1, y2, x2, r, g, b):
+        color = self.color888(r, g, b)
+        self._port.write("0f{0:02x}{1:02x}{2:02x}{3:02x}{4:02x}{5:02x}{6:04x}\n".format(x0, y0, y1, x1, y2, x2, color))
 
     def set_brightness(self, b):
         if b < 1:
