@@ -21,3 +21,5 @@ if __name__ == '__main__':
 
     panel.fill_triangle(18, 18, 26, 18, 22, 24, 0, 127, 127)
     panel.draw_triangle(21, 20, 29, 20, 25, 26, 255, 127, 127)
+
+    panel. draw_char(8, 3, 0, 255, 0, 0, 0, 127, 1, "B")

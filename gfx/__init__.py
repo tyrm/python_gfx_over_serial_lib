@@ -20,6 +20,16 @@ class GFX:
 
         return color
 
+    def draw_char(self, x, y, fr, fg, fb, br, bg, bb, s, c):
+        foreground = self.color888(fr, fg, fb)
+        background = self.color888(br, bg, bb)
+
+        char = ord(c)
+
+        print("10{0:02x}{1:02x}{2:04x}{3:04x}{4:02x}{5:02x}\n".format(x, y, foreground, background, s, char))
+
+        self._port.write("10{0:02x}{1:02x}{2:04x}{3:04x}{4:02x}{5:02x}\n".format(x, y, foreground, background, s, char))
+
     def draw_circle(self, x, y, rad, r, g, b):
         color = self.color888(r, g, b)
         self._port.write("0a{0:02x}{1:02x}{2:02x}{3:04x}\n".format(x, y, rad, color))
