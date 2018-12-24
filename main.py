@@ -3,6 +3,8 @@ from gfx import GFX
 if __name__ == '__main__':
     panel = GFX("COM21")
 
+    panel.set_brightness(8)
+
     panel.draw_pixel(0, 0, 255, 127, 0)
     panel.draw_pixel(17, 17, 255, 127, 0)
 
@@ -22,4 +24,16 @@ if __name__ == '__main__':
     panel.fill_triangle(18, 18, 26, 18, 22, 24, 0, 127, 127)
     panel.draw_triangle(21, 20, 29, 20, 25, 26, 255, 127, 127)
 
-    panel. draw_char(8, 3, 0, 255, 0, 0, 0, 127, 1, "B")
+    panel.set_font(0x00)
+    panel.draw_char(8, 3, 0, 255, 0, 0, 0, 127, 1, "B")
+
+    panel.set_text_color(0, 127, 255)
+    panel.set_cursor(0, 27)
+
+    panel.set_font(0x33)
+    panel.text_println("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+    panel.set_text_color(127, 0, 255)
+    panel.set_cursor(0, 52)
+    panel.text_println("abcdefghijklmnopqrstuvwxyz")
+
